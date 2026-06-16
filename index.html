@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ampy Logi | Relocation & Logistics Operating System</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Background Particles -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="Ampy Logi Logo" class="logo-img">
+                <span class="logo-text">AMPY <span class="accent-text">LOGI</span></span>
+            </a>
+            <nav class="nav">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#offerings" class="nav-link">Offerings</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#roadmap" class="nav-link">Roadmap</a>
+                <a href="#help" class="nav-link">Help & Support</a>
+                
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </nav>
+            <a href="#help" class="btn btn-primary nav-cta">Get a Quote</a>
+            
+            <div class="header-right-mobile">
+                <button class="theme-toggle-btn mobile-theme-toggle" id="themeToggleMobile" aria-label="Toggle Theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="mobile-toggle" aria-label="Toggle Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge">Next-Gen Logistics Operating Layer</div>
+                <h1 class="hero-title">Building the Operating System for <span class="text-gradient">Relocation & Logistics</span></h1>
+                <p class="hero-subtitle">A technology-driven B2B, B2C, and B2V network delivering pricing transparency, real-time tracking, and end-to-end operational accountability.</p>
+                <div class="hero-actions">
+                    <a href="#help" class="btn btn-primary btn-large">Book Relocation</a>
+                    <a href="#services" class="btn btn-secondary btn-large">Explore Services</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Interactive Tracking Simulator Widget -->
+                <div class="glass-card tracker-widget">
+                    <div class="widget-header">
+                        <div class="pulse-dot"></div>
+                        <span>Live Shipment Dispatch Tracker</span>
+                    </div>
+                    <div class="tracker-body">
+                        <!-- Search Box for Bill Number -->
+                        <div class="search-tracking-box">
+                            <input type="text" id="billNumberInput" placeholder="Enter Bill Number (e.g. AL-1001, AL-2002)">
+                            <button id="trackBtn" class="btn btn-primary">Track</button>
+                        </div>
+                        <div id="trackerDetails">
+                            <div class="tracker-row">
+                                <span class="tracker-label">Shipment ID:</span>
+                                <span class="tracker-value accent-cyan" id="trackId">AL-9082-TX</span>
+                            </div>
+                            <div class="tracker-row">
+                                <span class="tracker-label">Route:</span>
+                                <span class="tracker-value" id="trackRoute">Bengaluru ➔ Mumbai</span>
+                            </div>
+                            <div class="tracker-row">
+                                <span class="tracker-label">Status:</span>
+                                <span class="tracker-value badge-status" id="trackStatus">In Transit</span>
+                            </div>
+                            <div class="tracker-progress-container">
+                                <div class="tracker-progress-bar" id="trackerProgress" style="width: 50%;"></div>
+                            </div>
+                            <div class="tracker-checkpoints">
+                                <div class="checkpoint active" id="cp-pickup">
+                                    <span class="checkpoint-dot"></span>
+                                    <span class="checkpoint-name">Pickup</span>
+                                </div>
+                                <div class="checkpoint active" id="cp-sorting">
+                                    <span class="checkpoint-dot"></span>
+                                    <span class="checkpoint-name">Sorting</span>
+                                </div>
+                                <div class="checkpoint transit" id="transitCheckpoint">
+                                    <span class="checkpoint-dot"></span>
+                                    <span class="checkpoint-name">Transit</span>
+                                </div>
+                                <div class="checkpoint" id="cp-delivery">
+                                    <span class="checkpoint-dot"></span>
+                                    <span class="checkpoint-name">Delivery</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats & Traction Section -->
+    <section class="stats-section" id="stats">
+        <div class="container grid grid-4">
+            <div class="stat-card glass-card">
+                <h3 class="stat-num" data-target="500">0</h3>
+                <p class="stat-label">Orders Completed</p>
+            </div>
+            <div class="stat-card glass-card">
+                <h3 class="stat-num" data-target="25">0</h3>
+                <p class="stat-label">Orders in Progress</p>
+            </div>
+            <div class="stat-card glass-card">
+                <h3 class="stat-num" data-target="50">0</h3>
+                <p class="stat-label">Verified Vendors</p>
+            </div>
+            <div class="stat-card glass-card">
+                <h3 class="stat-num" data-target="7">0</h3>
+                <p class="stat-label">Cities Covered</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container grid grid-2">
+            <div class="about-info">
+                <h2 class="section-title">Redefining Logistics through <span class="text-gradient">Trust and Technology</span></h2>
+                <p class="section-desc">Ampy Logi is a modern logistics and relocation platform connecting businesses, households, and verified transport vendors into a single operational system. We eliminate fragmentation and provide a standardized execution layer.</p>
+                <div class="about-points">
+                    <div class="point-item">
+                        <div class="point-icon">✓</div>
+                        <div>
+                            <h4>Mission</h4>
+                            <p>Simplify logistics execution through vendor aggregation, transparent pricing, and on-time delivery.</p>
+                        </div>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-icon">✓</div>
+                        <div>
+                            <h4>Vision</h4>
+                            <p>To become India's most trusted technology-enabled relocation and logistics ecosystem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual glass-card">
+                <h3>Why AmpLogy?</h3>
+                <ul class="why-list">
+                    <li><strong>Asset-Light Model:</strong> Highly scalable operations powered by localized vendor partners.</li>
+                    <li><strong>Complete Visibility:</strong> Direct customer journey monitoring and issues resolved in real-time.</li>
+                    <li><strong>Rigorous Verification:</strong> Vendors pass service quality, experience, and background checks before onboarding.</li>
+                    <li><strong>Unified Ecosystem:</strong> Connect B2B, B2C, and B2V into a single hub.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offerings Section -->
+    <section class="offerings-section" id="offerings">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">The Three Pillars of <span class="text-gradient">Our Platform</span></h2>
+                <p class="section-desc max-w-600">We serve the entire logistics spectrum, facilitating corporate moves, household relocations, and vendor operations.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="offering-card glass-card" data-offering="b2b" style="cursor: pointer;">
+                    <div class="offering-icon icon-b2b">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <h3>B2B Corporate Logistics</h3>
+                    <p>Standardized corporate employee shifting, office relocations, and customized supply chain logistics with single-point accountability.</p>
+                    <ul class="card-features">
+                        <li>Office Relocations</li>
+                        <li>Employee Relocations</li>
+                        <li>Dedicated Account Managers</li>
+                    </ul>
+                </div>
+                <div class="offering-card glass-card" data-offering="b2c" style="cursor: pointer;">
+                    <div class="offering-icon icon-b2c">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3>B2C Household Shifting</h3>
+                    <p>Transparent local and intercity household relocation services with verified vendor matching and end-to-end execution support.</p>
+                    <ul class="card-features">
+                        <li>Local & Intercity Shifting</li>
+                        <li>Premium Packaging Options</li>
+                        <li>Loading & Transport Control</li>
+                    </ul>
+                </div>
+                <div class="offering-card glass-card" data-offering="b2v" style="cursor: pointer;">
+                    <div class="offering-icon icon-b2v">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>B2V Vendor Operations</h3>
+                    <p>Empowering local relocation operators, drivers, and packers with consistent demand, timely payments, and tracking software.</p>
+                    <ul class="card-features">
+                        <li>Consistent Load Matching</li>
+                        <li>Technology Enablement</li>
+                        <li>Fast Settlement Cycles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Details (Interactive Tabs) -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Explore Our <span class="text-gradient">Services & Coverage</span></h2>
+                <p class="section-desc max-w-600">Tailored relocation models designed to ensure smooth execution, whether for corporate contracts or direct households.</p>
+            </div>
+            
+            <!-- Tabs Controls -->
+            <div class="tab-controls">
+                <button class="tab-btn active" data-tab="b2b-tab">Corporate Services (B2B)</button>
+                <button class="tab-btn" data-tab="b2c-tab">Household Relocations (B2C)</button>
+            </div>
+
+            <!-- Tabs Content -->
+            <div class="tab-content-container">
+                <!-- B2B Content -->
+                <div class="tab-panel active" id="b2b-tab">
+                    <div class="grid grid-2-equal">
+                        <div class="panel-info">
+                            <h3>Corporate relocation managed end-to-end</h3>
+                            <p>We serve as a single point of accountability for your business's logistics needs. We handle the paperwork, vendor coordination, and billing transparency so you can focus on your core business operations.</p>
+                            <h4 class="sub-heading">Industries Currently Served:</h4>
+                            <div class="industries-grid">
+                                <span class="ind-tag">FMCG Distribution</span>
+                                <span class="ind-tag">Electronics & Appliances</span>
+                                <span class="ind-tag">Construction Materials</span>
+                                <span class="ind-tag">Textile & Apparel</span>
+                                <span class="ind-tag">E-commerce & D2C</span>
+                                <span class="ind-tag">Pharma & Medical</span>
+                                <span class="ind-tag">Energy & Solar Equipment</span>
+                            </div>
+                            <h4 class="sub-heading mt-20">Expanding Opportunities:</h4>
+                            <div class="industries-grid">
+                                <span class="ind-tag exp">Cold Chain & Perishables</span>
+                                <span class="ind-tag exp">MSME Logistics</span>
+                                <span class="ind-tag exp">Automotive Parts</span>
+                                <span class="ind-tag exp">Exhibition Cargo</span>
+                            </div>
+                        </div>
+                        <div class="panel-details glass-card">
+                            <h4>B2B Service Checklist</h4>
+                            <ul class="checklist-items">
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <div>
+                                        <h5>Employee Relocation</h5>
+                                        <p>Seamless shifting services for employees relocating across cities.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <div>
+                                        <h5>Office & Hub Migration</h5>
+                                        <p>Moving office IT infrastructure, heavy files, furniture, and inventory.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <div>
+                                        <h5>Full Accountability</h5>
+                                        <p>Single billing point, centralized SLA tracking, and cargo insurance options.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B2C Content -->
+                <div class="tab-panel" id="b2c-tab">
+                    <div class="grid grid-2-equal">
+                        <div class="panel-info">
+                            <h3>Safe and reliable household shifting</h3>
+                            <p>Moving shouldn't be stressful. We connect you with pre-vetted packing and moving experts, negotiate transparent rates, and closely monitor the entire transition process from loading to final unpacking.</p>
+                            <h4 class="sub-heading">Household Service Range:</h4>
+                            <div class="shifting-services">
+                                <div class="shifting-item">
+                                    <div class="shifting-num">01</div>
+                                    <div>
+                                        <h5>Local Shifting</h5>
+                                        <p>Quick, efficient relocations within the same city with professional packing.</p>
+                                    </div>
+                                </div>
+                                <div class="shifting-item">
+                                    <div class="shifting-num">02</div>
+                                    <div>
+                                        <h5>Intercity Shifting</h5>
+                                        <p>Secure long-distance transport with real-time GPS tracking checkpoints.</p>
+                                    </div>
+                                </div>
+                                <div class="shifting-item">
+                                    <div class="shifting-num">03</div>
+                                    <div>
+                                        <h5>Vehicle Transportation</h5>
+                                        <p>Dedicated carriers for moving your two-wheelers and cars safely.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-details glass-card">
+                            <h4>B2C Shifting Benefits</h4>
+                            <ul class="checklist-items">
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <div>
+                                        <h5>100% Verified Crew</h5>
+                                        <p>Our vendors are thoroughly background checked for professionalism.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <div>
+                                        <h5>No Hidden Charges</h5>
+                                        <p>Clear pricing structure based on distance, volume, and material.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <div>
+                                        <h5>Multi-Layer Packaging</h5>
+                                        <p>Premium bubble wraps, foam sheets, and sturdy crates for delicate items.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- D2C Execution Showcase Section -->
+    <section class="d2c-showcase-section" id="d2c-showcase">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">D2C & Merchandise <span class="text-gradient">Execution Showcase</span></h2>
+                <p class="section-desc max-w-600">Explore how Ampy Logi supports modern Direct-to-Consumer (D2C) brands with specialized packaging and logistics.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="showcase-card glass-card">
+                    <div class="showcase-icon">📦</div>
+                    <h4>Branded Merchandise</h4>
+                    <p>Seamless transport and bulk coordination of premium corporate merchandise for seasonal client gifts and onboarding kits.</p>
+                </div>
+                <div class="showcase-card glass-card">
+                    <div class="showcase-icon">📣</div>
+                    <h4>Promotional Products</h4>
+                    <p>Fast dispatch and distribution of banners, standees, and event marketing collateral to multiple cities simultaneously.</p>
+                </div>
+                <div class="showcase-card glass-card">
+                    <div class="showcase-icon">✨</div>
+                    <h4>D2C Dispatches & Packaging</h4>
+                    <p>End-to-end multi-layer packaging support and final consumer dispatches for e-commerce brands with zero transit damages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operational Lifecycle Timeline -->
+    <section class="lifecycle-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Operational <span class="text-gradient">Process</span></h2>
+                <p class="section-desc max-w-600">How we manage logistics and relocation request fulfillment seamlessly from inquiry to completion.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot">1</div>
+                    <div class="timeline-content glass-card">
+                        <h4>Lead & Inquiry</h4>
+                        <p>Customer submits relocation or transport requests online via inquiry form.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">2</div>
+                    <div class="timeline-content glass-card">
+                        <h4>Verification & Quote</h4>
+                        <p>Our support team verifies details and calculates transparent, custom quotes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">3</div>
+                    <div class="timeline-content glass-card">
+                        <h4>Vendor Allocation</h4>
+                        <p>Best-fit pre-screened logistics vendor is assigned based on load and route parameters.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">4</div>
+                    <div class="timeline-content glass-card">
+                        <h4>Execution & Monitoring</h4>
+                        <p>Relocation starts with safety packaging and is tracked in real-time by operations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">5</div>
+                    <div class="timeline-content glass-card">
+                        <h4>Closure & Support</h4>
+                        <p>Shipment delivered safely, unloading completed, and formal ticket closure occurs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology & Vision Roadmap -->
+    <section class="roadmap-section" id="roadmap">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Technology <span class="text-gradient">Roadmap</span></h2>
+                <p class="section-desc max-w-600">Our four-phase approach to building India's premier automated logistics operating system.</p>
+            </div>
+            <div class="roadmap-grid">
+                <div class="roadmap-card glass-card current">
+                    <div class="roadmap-badge active">Phase 1 (Current)</div>
+                    <h3>Foundation Setup</h3>
+                    <p>Using digital worksheets, Google Form channels, and manual dispatch dashboards to execute orders and test operational structures.</p>
+                </div>
+                <div class="roadmap-card glass-card">
+                    <div class="roadmap-badge">Phase 2</div>
+                    <h3>Standardized Portals</h3>
+                    <p>Launching the customer inquiry website and deploying centralized CRM systems for fast, automated pricing computations.</p>
+                </div>
+                <div class="roadmap-card glass-card">
+                    <div class="roadmap-badge">Phase 3</div>
+                    <h3>Interactive Ecosystem</h3>
+                    <p>Release of dedicated Vendor Portals for order accepting, Customer Dashboards, and automated real-time GPS tracking.</p>
+                </div>
+                <div class="roadmap-card glass-card">
+                    <div class="roadmap-badge">Phase 4</div>
+                    <h3>Mobile Operations</h3>
+                    <p>Deploying dedicated Android & iOS applications for customers and truck drivers to manage operations completely on the go.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ Accordion Section -->
+    <section class="faq-section" id="faqs">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Frequently Asked <span class="text-gradient">Questions</span></h2>
+                <p class="section-desc max-w-600">Quick answers to common inquiries about charges, verification, and our operational models.</p>
+            </div>
+            <div class="faq-accordion-container max-w-600">
+                <div class="faq-item glass-card">
+                    <div class="faq-question">
+                        <span>How are logistics charges calculated?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our charges are computed dynamically based on distance, vehicle type requirement, total helpers/manpower needed, packaging materials selected, and the nature of the cargo items.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card">
+                    <div class="faq-question">
+                        <span>Are vendors verified before onboarding?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Every driver, loader, and packer agency undergoes strict background verification, operational experience reviews, and service quality checks before joining the Ampy Logi network.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card">
+                    <div class="faq-question">
+                        <span>Do you provide both B2B and B2C services?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Ampy Logi operates B2B services (office shifting, commercial logistics) as well as B2C services (household shifting, vehicle relocation) under the same unified system.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card">
+                    <div class="faq-question">
+                        <span>Can I request a customized quotation?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, absolutely. We evaluate special transport projects, heavy freight, and complex industrial relocations individually to supply personalized cost structures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help & Support (Contact Section + Backend endpoint integration) -->
+    <section class="contact-section" id="help">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Get a Quote / <span class="text-gradient">Support Section</span></h2>
+                <p class="section-desc max-w-600">Have a query or corporate relocation requirement? Drop us a message, and our backend will immediately route it to our team.</p>
+            </div>
+            <div class="grid grid-2-equal">
+                <!-- Form block -->
+                <div class="glass-card contact-form-container">
+                    <div class="query-tab-controls">
+                        <button class="query-tab-btn active" data-form="clientQueryForm">Client Inquiry (B2B/B2C)</button>
+                        <button class="query-tab-btn" data-form="vendorQueryForm">Vendor Partnership (B2V)</button>
+                    </div>
+
+
+
+                    <!-- Client Inquiry Form -->
+                    <form id="clientQueryForm" class="contact-form query-form-panel active">
+                        <input type="hidden" name="inquiryType" value="client">
+                        <div class="form-group">
+                            <label for="clientName">Name / Business Contact</label>
+                            <input type="text" id="clientName" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="clientEmail">Email Address</label>
+                            <input type="email" id="clientEmail" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="clientCategory">Inquiry Type</label>
+                            <select id="clientCategory" name="category" required>
+                                <option value="B2B" selected>B2B Corporate Relocation / Logistics</option>
+                                <option value="B2C">B2C Household Shifting</option>
+                                <option value="Other">Other Support</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientMessage">Your Shifting / Logistics Requirements</label>
+                            <textarea id="clientMessage" name="message" rows="4" required placeholder="Describe your cargo volume, origin/destination cities..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block querySubmitBtn">
+                            <span class="btn-text">Submit Client Query</span>
+                            <span class="spinner formSpinner"></span>
+                        </button>
+                        <div class="form-alternate-link">
+                            Or submit via: <a href="https://forms.gle/yUbdNtFyVDPhoYuD9" target="_blank" class="accent-link">Order Inquiry Form (Google Forms)</a>
+                        </div>
+                    </form>
+
+                    <!-- Vendor Partnership Form -->
+                    <form id="vendorQueryForm" class="contact-form query-form-panel">
+                        <input type="hidden" name="inquiryType" value="vendor">
+                        <div class="form-group">
+                            <label for="vendorCompanyName">Company Name / Operator Name</label>
+                            <input type="text" id="vendorCompanyName" name="vendorName" required placeholder="Ampy Packers & Movers">
+                        </div>
+                        <div class="grid grid-2-equal" style="gap: 12px; margin-bottom: 0;">
+                            <div class="form-group">
+                                <label for="vendorContactName">Contact Person Name</label>
+                                <input type="text" id="vendorContactName" name="name" required placeholder="Satish Kumar">
+                            </div>
+                            <div class="form-group">
+                                <label for="vendorPhone">Mobile Number</label>
+                                <input type="tel" id="vendorPhone" name="phone" required placeholder="9876543210">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="vendorEmail">Email Address</label>
+                            <input type="email" id="vendorEmail" name="email" required placeholder="vendor@example.com">
+                        </div>
+                        <div class="grid grid-2-equal" style="gap: 12px; margin-bottom: 0;">
+                            <div class="form-group">
+                                <label for="vendorVehicle">Vehicle Type (if applicable)</label>
+                                <input type="text" id="vendorVehicle" name="vehicleType" placeholder="e.g. Tata Ace, Bolero Pickup, 3-Wheeler">
+                            </div>
+                            <div class="form-group">
+                                <label for="vendorCity">City of Operation</label>
+                                <input type="text" id="vendorCity" name="city" required placeholder="e.g. Bhubaneswar, Bangalore">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="vendorMessage">Partnership Message / Notes</label>
+                            <textarea id="vendorMessage" name="message" rows="3" required placeholder="Tell us about your fleet strength or relocation experience..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block querySubmitBtn">
+                            <span class="btn-text">Submit Vendor Registration</span>
+                            <span class="spinner formSpinner"></span>
+                        </button>
+                        <div class="form-alternate-link">
+                            Or register via: <a href="https://forms.gle/Hn2rFfxPJscEMqFbA" target="_blank" class="accent-link">Vendor Registration Form (Google Forms)</a>
+                        </div>
+                    </form>
+
+
+                    
+                    <div class="form-status" id="formStatus"></div>
+
+                </div>
+
+                <!-- Info block -->
+                <div class="contact-info-panel glass-card">
+                    <h3>Direct Coordination</h3>
+                    <p class="mb-30">Feel free to connect directly through our formal support channels for urgent shifting requests.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h5>Phone Support</h5>
+                            <p><strong>Business:</strong> +91 9777013918</p>
+                            <p><strong>Personal:</strong> +91 8763993918</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h5>Email Inquiries</h5>
+                            <p><strong>Business:</strong> ampy.logi21@gmail.com</p>
+                            <p><strong>Personal:</strong> Satyaniks1@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🔗</div>
+                        <div>
+                            <h5>Interactive Forms</h5>
+                            <p><a href="https://forms.gle/yUbdNtFyVDPhoYuD9" target="_blank" class="accent-link">Order Inquiry Form (Google Forms)</a></p>
+                            <p><a href="https://forms.gle/Hn2rFfxPJscEMqFbA" target="_blank" class="accent-link">Vendor Registration Form (Google Forms)</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2026 Ampy Logi. All Rights Reserved. | Founder: Satya Ranjan Patnaik</p>
+            
+            <!-- Digital Presence Social Links -->
+            <div class="social-links-footer">
+                <a href="https://linkedin.com/company/ampy-logi" class="social-icon-link" aria-label="LinkedIn" target="_blank">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.8v8.37h2.8v-4.87c0-.26.05-.52.13-.7a1.11 1.11 0 0 1 .98-.75c.57 0 .84.44.84 1.1v5.22h2.8M6.5 8.37a1.37 1.37 0 1 0 0-2.75 1.37 1.37 0 0 0 0 2.75m1.4 10.13V10h-2.8v8.5h2.8Z"/></svg>
+                </a>
+                <a href="https://facebook.com/ampy.logi" class="social-icon-link" aria-label="Facebook" target="_blank">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8Z"/></svg>
+                </a>
+                <a href="https://instagram.com/ampy.logi" class="social-icon-link" aria-label="Instagram" target="_blank">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.88 4.88 0 0 1 1.18 1.82 4.88 4.88 0 0 1-1.18 1.82 4.88 4.88 0 0 1-1.82 1.18c-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.88 4.88 0 0 1-1.82-1.18 4.88 4.88 0 0 1-1.18-1.82c-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22a4.88 4.88 0 0 1 1.18-1.82 4.88 4.88 0 0 1 1.82-1.18c.42-.16 1.05-.36 2.22-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.92.56a7.04 7.04 0 0 0-2.54 1.66A7.04 7.04 0 0 0 .93 4.83c-.3.77-.5 1.64-.56 2.92C.31 9.03.3 9.44.3 12.7s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.92a7.04 7.04 0 0 0 1.66 2.54 7.04 7.04 0 0 0 2.54 1.66c.77.3 1.64.5 2.92.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.92-.56a7.04 7.04 0 0 0 2.54-1.66 7.04 7.04 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.92a7.04 7.04 0 0 0-1.66-2.54 7.04 7.04 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C16.33.01 15.92 0 12.66 0H12Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-10.4a1.44 1.44 0 1 0 0-2.88 1.44 1.44 0 0 0 0 2.88Z"/></svg>
+                </a>
+                <a href="https://x.com/ampy_logi" class="social-icon-link" aria-label="X (Twitter)" target="_blank">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+            </div>
+
+            <p class="footer-links">
+                <a href="#about">About Us</a> | 
+                <a href="#services">Services</a> | 
+                <a href="#help">Help & Privacy Framework</a>
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- Interactive Details Modal -->
+    <div class="modal-overlay" id="detailsModal">
+        <div class="modal-card glass-card">
+            <button class="modal-close-btn" id="modalClose" aria-label="Close Details">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon-container" id="modalIconContainer"></div>
+                <h3 id="modalTitle">Offering Details</h3>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Data will be dynamically injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

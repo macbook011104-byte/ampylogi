@@ -1,0 +1,3 @@
+node_modules/
+.DS_Store
+# queries.json # Uncomment this if you want to keep test submissions private

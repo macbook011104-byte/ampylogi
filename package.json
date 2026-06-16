@@ -1,0 +1,15 @@
+{
+  "name": "ampy-logi-demo",
+  "version": "1.0.0",
+  "description": "Premium Relocation & Logistics Platform Demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "nodemailer": "^6.10.0"
+  }
+}

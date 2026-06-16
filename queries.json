@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1780821303407",
+    "name": "Test User",
+    "email": "test@example.com",
+    "category": "B2B",
+    "message": "Test shifting query message",
+    "timestamp": "2026-06-07T08:35:03.407Z"
+  },
+  {
+    "id": "1781518545341",
+    "name": "Aman Sen",
+    "email": "aman@example.com",
+    "category": "B2C",
+    "message": "Local shifting query details",
+    "timestamp": "2026-06-15T10:15:45.341Z"
+  },
+  {
+    "id": "1781518566090",
+    "name": "Sanjay (Rao Transport)",
+    "email": "sanjay@rao.com",
+    "category": "B2V",
+    "message": "[VENDOR REGISTRATION]\nPhone: 9876543210\nVehicle: Tata Ace\nCity: Bangalore\nNotes: Fleet of 5 trucks",
+    "timestamp": "2026-06-15T10:16:06.090Z"
+  },
+  {
+    "id": "1781537715994",
+    "name": "Test Contact Form User",
+    "email": "test@contact.com",
+    "category": "General Contact",
+    "message": "[SUBJECT: Partnership inquiry]\nThis is a test message to verify the new general contact form.",
+    "timestamp": "2026-06-15T15:35:15.994Z"
+  }
+]
