@@ -44,13 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Theme from localStorage
     const savedTheme = localStorage.getItem('ampy_theme');
-    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
     
-    if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
-        setTheme(true);
-    } else {
+    // Default to Light (White Theme) if no preference is saved yet
+    if (savedTheme === 'dark') {
         setTheme(false);
+    } else {
+        setTheme(true);
     }
+
 
     // Click listeners
     if (themeToggleBtn) {
