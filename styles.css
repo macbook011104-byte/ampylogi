@@ -433,17 +433,17 @@ body.dark-mode .hero-bg-watermark {
 }
 
 .hero-container {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 50px;
-    align-items: center;
     position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 540px;
     z-index: 2;
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
+    max-width: 620px;
 }
 
 .badge {
@@ -466,6 +466,11 @@ body.dark-mode .hero-bg-watermark {
     margin-bottom: 24px;
     position: relative;
     z-index: 10;
+    text-shadow: 0 2px 20px rgba(255, 255, 255, 0.9);
+}
+
+body.dark-mode .hero-title {
+    text-shadow: 0 2px 20px rgba(11, 15, 25, 0.9);
 }
 
 .hero-subtitle {
@@ -484,12 +489,13 @@ body.dark-mode .hero-bg-watermark {
 }
 
 .hero-visual {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    z-index: 5;
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 62%;
+    max-width: 660px;
+    z-index: 3;
 }
 
 /* Kinetic Entrance Animation for Hero Visual */
@@ -500,25 +506,24 @@ body.dark-mode .hero-bg-watermark {
 @keyframes driveSlideIn {
     0% {
         opacity: 0;
-        transform: translateX(80px) scale(0.92);
+        transform: translateY(-50%) translateX(80px) scale(0.92);
     }
     100% {
         opacity: 1;
-        transform: translateX(0) scale(1);
+        transform: translateY(-50%) translateX(0) scale(1);
     }
 }
 
 .hero-showcase-card {
     position: relative;
     width: 100%;
-    max-width: 600px;
     border-radius: 28px;
     padding: 16px;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(225, 231, 239, 0.9);
-    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.1), 0 0 40px rgba(255, 107, 0, 0.08);
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.12), 0 0 40px rgba(255, 107, 0, 0.08);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2334,5 +2339,35 @@ body.light-mode .social-icon-link {
 
 body.light-mode .social-icon-link:hover {
     color: #ffffff;
+}
+
+@media (max-width: 991px) {
+    .hero-container {
+        flex-direction: column;
+        min-height: auto;
+        gap: 40px;
+    }
+    .hero-content {
+        max-width: 100%;
+    }
+    .hero-visual {
+        position: relative;
+        right: 0;
+        top: 0;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+    @keyframes driveSlideIn {
+        0% {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 }
 
