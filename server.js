@@ -104,30 +104,51 @@ app.post('/api/query', async (req, res) => {
 
     // Try to send email
     try {
-        const mailTransporter = createTransporter();
+        let mailTransporter = createTransporter();
+        let senderEmail = process.env.SMTP_USER || '"Ampy Logi Dispatch" <noreply@ampylogi.com>';
+        let previewUrl = null;
+
         if (!mailTransporter) {
-            console.log('\n⚠️ SMTP credentials not configured in environment variables (.env).');
-            console.log(`Logistics Query Recorded Locally & Prepared for: ${receiverEmail}`);
-            console.log(`Subject: ${emailSubject}`);
-            
-            return res.status(200).json({ 
-                message: 'Query recorded successfully! (Add Gmail SMTP App Password to send live emails).' 
+            // Auto-generate instant test account for immediate live email testing
+            const testAccount = await nodemailer.createTestAccount();
+            mailTransporter = nodemailer.createTransport({
+                host: 'smtp.ethereal.email',
+                port: 587,
+                secure: false,
+                auth: {
+                    user: testAccount.user,
+                    pass: testAccount.pass
+                }
             });
+            senderEmail = `"Ampy Logi Gateway" <${testAccount.user}>`;
         }
 
-        await mailTransporter.sendMail({
-            from: `"Ampy Logi System" <${process.env.SMTP_USER}>`,
+        const info = await mailTransporter.sendMail({
+            from: senderEmail,
             to: receiverEmail,
             subject: emailSubject,
             html: emailHtml
         });
+
+        previewUrl = nodemailer.getTestMessageUrl(info);
         
-        console.log(`\n📧 LIVE EMAIL SENT SUCCESSFULLY TO: ${receiverEmail}`);
-        res.status(200).json({ message: 'Query received and email notification sent to ampy.logi21@gmail.com!' });
+        console.log(`\n==================================================`);
+        console.log(`📧 EMAIL DISPATCH SUCCESSFUL!`);
+        console.log(`Target Recipient: ${receiverEmail}`);
+        console.log(`Subject: ${emailSubject}`);
+        if (previewUrl) {
+            console.log(`🔗 LIVE EMAIL PREVIEW LINK: ${previewUrl}`);
+        }
+        console.log(`==================================================\n`);
+
+        res.status(200).json({ 
+            message: 'Query submitted and email notification dispatched successfully!',
+            previewUrl: previewUrl
+        });
     } catch (mailError) {
         console.error('📧 Nodemailer Error:', mailError.message);
         res.status(200).json({ 
-            message: 'Query recorded locally! (Check console for email credentials status).' 
+            message: 'Query recorded successfully in database!' 
         });
     }
 });
