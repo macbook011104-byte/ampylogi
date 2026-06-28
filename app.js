@@ -240,11 +240,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Attach listeners
     handleFormSubmit('clientQueryForm', (form) => {
+        const name = form.querySelector('#clientName').value.trim();
+        const phone = form.querySelector('#clientPhone').value.trim();
+        const email = form.querySelector('#clientEmail').value.trim();
+        const category = form.querySelector('#clientCategory').value;
+        const origin = form.querySelector('#clientOrigin').value.trim();
+        const destination = form.querySelector('#clientDestination').value.trim();
+        const shiftingDate = form.querySelector('#clientDate').value;
+        const message = form.querySelector('#clientMessage').value.trim();
+
         return {
-            category: form.querySelector('#clientCategory').value,
-            name: form.querySelector('#clientName').value.trim(),
-            email: form.querySelector('#clientEmail').value.trim(),
-            message: form.querySelector('#clientMessage').value.trim()
+            inquiryType: 'client',
+            name: name,
+            phone: phone,
+            email: email,
+            category: category,
+            origin: origin,
+            destination: destination,
+            shiftingDate: shiftingDate || 'Not specified',
+            message: `[CLIENT LOGISTICS INQUIRY]\nPhone/WhatsApp: ${phone}\nCategory: ${category}\nRoute: ${origin} ➔ ${destination}\nExpected Date: ${shiftingDate || 'Flexible'}\nRequirements: ${message}`
         };
     });
 
@@ -253,15 +267,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const contactName = form.querySelector('#vendorContactName').value.trim();
         const phone = form.querySelector('#vendorPhone').value.trim();
         const email = form.querySelector('#vendorEmail').value.trim();
-        const vehicle = form.querySelector('#vendorVehicle').value.trim();
+        const category = form.querySelector('#vendorCategory').value;
         const city = form.querySelector('#vendorCity').value.trim();
+        const vehicle = form.querySelector('#vendorVehicle').value.trim();
+        const gstStatus = form.querySelector('#vendorGst').value;
         const message = form.querySelector('#vendorMessage').value.trim();
 
         return {
-            category: 'B2V',
+            inquiryType: 'vendor',
+            category: `B2V Vendor (${category})`,
             name: `${contactName} (${vendorName})`,
             email: email,
-            message: `[VENDOR REGISTRATION]\nPhone: ${phone}\nVehicle: ${vehicle || 'N/A'}\nCity: ${city}\nNotes: ${message}`
+            phone: phone,
+            city: city,
+            vehicleType: vehicle || 'N/A',
+            gstStatus: gstStatus,
+            message: `[VENDOR ONBOARDING REGISTRATION]\nCompany: ${vendorName}\nContact Person: ${contactName}\nPhone: ${phone}\nPartner Category: ${category}\nOperating City: ${city}\nVehicle Fleet: ${vehicle || 'N/A'}\nGST Status: ${gstStatus}\nNotes: ${message}`
         };
     });
 

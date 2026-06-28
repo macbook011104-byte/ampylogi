@@ -28,24 +28,22 @@ const mailTransporter = nodemailer.createTransport({
 
 // Endpoint to handle Query Form Submissions
 app.post('/api/query', async (req, res) => {
-    const { name, email, category, message } = req.body;
+    const queryData = req.body;
+    const { name, email, category, message } = queryData;
 
-    // Simple validation
-    if (!name || !email || !category || !message) {
-        return res.status(400).json({ error: 'All fields are required.' });
+    // Validation
+    if (!name || (!email && !queryData.phone) || !message) {
+        return res.status(400).json({ error: 'Please fill in all required fields.' });
     }
 
     const newQuery = {
         id: Date.now().toString(),
-        name,
-        email,
-        category,
-        message,
+        ...queryData,
         timestamp: new Date().toISOString()
     };
 
     console.log('\n--- New Shifting/Support Query Received ---');
-    console.log(`From: ${name} (${email})`);
+    console.log(`From: ${name} (${email || queryData.phone})`);
     console.log(`Category: ${category}`);
     console.log(`Message: ${message}`);
 

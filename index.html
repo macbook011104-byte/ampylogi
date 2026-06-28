@@ -487,77 +487,119 @@
                     <!-- Client Inquiry Form -->
                     <form id="clientQueryForm" class="contact-form query-form-panel active">
                         <input type="hidden" name="inquiryType" value="client">
-                        <div class="form-group">
-                            <label for="clientName">Name / Business Contact</label>
-                            <input type="text" id="clientName" name="name" required placeholder="John Doe">
+                        <div class="grid grid-2-equal" style="gap: 12px; margin-bottom: 0;">
+                            <div class="form-group">
+                                <label for="clientName">Name / Business Contact *</label>
+                                <input type="text" id="clientName" name="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="clientPhone">Mobile / WhatsApp Number *</label>
+                                <input type="tel" id="clientPhone" name="phone" required placeholder="9777013918">
+                            </div>
+                        </div>
+                        <div class="grid grid-2-equal" style="gap: 12px; margin-bottom: 0;">
+                            <div class="form-group">
+                                <label for="clientEmail">Email Address *</label>
+                                <input type="email" id="clientEmail" name="email" required placeholder="john@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="clientCategory">Service / Shifting Category *</label>
+                                <select id="clientCategory" name="category" required>
+                                    <option value="B2C Household Shifting" selected>B2C Household Relocation & Packers Movers</option>
+                                    <option value="B2B Corporate Relocation">B2B Corporate & Office Relocation</option>
+                                    <option value="FMCG & Commercial Logistics">FMCG & Commercial Goods Distribution</option>
+                                    <option value="Electronics & D2C Deliveries">Electronics, Appliances & D2C Movements</option>
+                                    <option value="Construction & Energy Equipment">Construction, Solar & Energy Equipment</option>
+                                    <option value="Vehicle Transportation">Vehicle Transportation (Car/Bike)</option>
+                                    <option value="Other Support Services">Other Logistics Services</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-2-equal" style="gap: 12px; margin-bottom: 0;">
+                            <div class="form-group">
+                                <label for="clientOrigin">Origin City (Pickup Location) *</label>
+                                <input type="text" id="clientOrigin" name="origin" required placeholder="e.g. Bhubaneswar, Bangalore">
+                            </div>
+                            <div class="form-group">
+                                <label for="clientDestination">Destination City (Drop Location) *</label>
+                                <input type="text" id="clientDestination" name="destination" required placeholder="e.g. Mumbai, Delhi, PAN-India">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="clientEmail">Email Address</label>
-                            <input type="email" id="clientEmail" name="email" required placeholder="john@example.com">
+                            <label for="clientDate">Expected Shifting / Delivery Date</label>
+                            <input type="date" id="clientDate" name="shiftingDate">
                         </div>
                         <div class="form-group">
-                            <label for="clientCategory">Inquiry Type</label>
-                            <select id="clientCategory" name="category" required>
-                                <option value="B2B" selected>B2B Corporate Relocation / Logistics</option>
-                                <option value="B2C">B2C Household Shifting</option>
-                                <option value="Other">Other Support</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="clientMessage">Your Shifting / Logistics Requirements</label>
-                            <textarea id="clientMessage" name="message" rows="4" required placeholder="Describe your cargo volume, origin/destination cities..."></textarea>
+                            <label for="clientMessage">Shifting Requirements / Cargo Volume Details *</label>
+                            <textarea id="clientMessage" name="message" rows="3" required placeholder="Describe items, 2BHK/3BHK size, cargo weight in tons, special packing needed..."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block querySubmitBtn">
                             <span class="btn-text">Submit Client Query</span>
                             <span class="spinner formSpinner"></span>
                         </button>
-                        <div class="form-alternate-link">
-                            Or submit via: <a href="https://forms.gle/yUbdNtFyVDPhoYuD9" target="_blank" class="accent-link">Order Inquiry Form (Google Forms)</a>
-                        </div>
                     </form>
 
                     <!-- Vendor Partnership Form -->
                     <form id="vendorQueryForm" class="contact-form query-form-panel">
                         <input type="hidden" name="inquiryType" value="vendor">
-                        <div class="form-group">
-                            <label for="vendorCompanyName">Company Name / Operator Name</label>
-                            <input type="text" id="vendorCompanyName" name="vendorName" required placeholder="Ampy Packers & Movers">
-                        </div>
                         <div class="grid grid-2-equal" style="gap: 12px; margin-bottom: 0;">
                             <div class="form-group">
-                                <label for="vendorContactName">Contact Person Name</label>
+                                <label for="vendorCompanyName">Company Name / Fleet Operator *</label>
+                                <input type="text" id="vendorCompanyName" name="vendorName" required placeholder="Ampy Packers & Movers">
+                            </div>
+                            <div class="form-group">
+                                <label for="vendorContactName">Contact Person Name *</label>
                                 <input type="text" id="vendorContactName" name="name" required placeholder="Satish Kumar">
                             </div>
-                            <div class="form-group">
-                                <label for="vendorPhone">Mobile Number</label>
-                                <input type="tel" id="vendorPhone" name="phone" required placeholder="9876543210">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="vendorEmail">Email Address</label>
-                            <input type="email" id="vendorEmail" name="email" required placeholder="vendor@example.com">
                         </div>
                         <div class="grid grid-2-equal" style="gap: 12px; margin-bottom: 0;">
                             <div class="form-group">
-                                <label for="vendorVehicle">Vehicle Type (if applicable)</label>
-                                <input type="text" id="vendorVehicle" name="vehicleType" placeholder="e.g. Tata Ace, Bolero Pickup, 3-Wheeler">
+                                <label for="vendorPhone">Mobile / WhatsApp Number *</label>
+                                <input type="tel" id="vendorPhone" name="phone" required placeholder="9876543210">
                             </div>
                             <div class="form-group">
-                                <label for="vendorCity">City of Operation</label>
-                                <input type="text" id="vendorCity" name="city" required placeholder="e.g. Bhubaneswar, Bangalore">
+                                <label for="vendorEmail">Email Address *</label>
+                                <input type="email" id="vendorEmail" name="email" required placeholder="vendor@example.com">
+                            </div>
+                        </div>
+                        <div class="grid grid-2-equal" style="gap: 12px; margin-bottom: 0;">
+                            <div class="form-group">
+                                <label for="vendorCategory">Vendor Partner Category *</label>
+                                <select id="vendorCategory" name="category" required>
+                                    <option value="Packers & Movers" selected>Packers & Movers Partner</option>
+                                    <option value="Transporter / Fleet Owner">Transporter / Fleet Owner</option>
+                                    <option value="Independent Driver">Independent Driver / Truck Operator</option>
+                                    <option value="Labour & Loading Team">Labour & Loading Team Partner</option>
+                                    <option value="Specialized Logistics Partner">Specialized Logistics Aggregator</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="vendorCity">Primary Operating City *</label>
+                                <input type="text" id="vendorCity" name="city" required placeholder="e.g. Bhubaneswar, Cuttack, Bangalore">
+                            </div>
+                        </div>
+                        <div class="grid grid-2-equal" style="gap: 12px; margin-bottom: 0;">
+                            <div class="form-group">
+                                <label for="vendorVehicle">Fleet / Vehicle Type Details</label>
+                                <input type="text" id="vendorVehicle" name="vehicleType" placeholder="e.g. Tata Ace, 14ft Container, Pickup, Multi-Axle">
+                            </div>
+                            <div class="form-group">
+                                <label for="vendorGst">GST / Registration Status *</label>
+                                <select id="vendorGst" name="gstStatus" required>
+                                    <option value="GST Registered Company" selected>GST Registered Company</option>
+                                    <option value="Udyam / MSME / Proprietorship">Udyam / MSME / Proprietorship</option>
+                                    <option value="Individual Operator">Individual Operator</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="vendorMessage">Partnership Message / Notes</label>
-                            <textarea id="vendorMessage" name="message" rows="3" required placeholder="Tell us about your fleet strength or relocation experience..."></textarea>
+                            <label for="vendorMessage">Fleet Strength & Experience Notes *</label>
+                            <textarea id="vendorMessage" name="message" rows="3" required placeholder="Describe your vehicle count, team strength, or logistics experience..."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block querySubmitBtn">
                             <span class="btn-text">Submit Vendor Registration</span>
                             <span class="spinner formSpinner"></span>
                         </button>
-                        <div class="form-alternate-link">
-                            Or register via: <a href="https://forms.gle/Hn2rFfxPJscEMqFbA" target="_blank" class="accent-link">Vendor Registration Form (Google Forms)</a>
-                        </div>
                     </form>
 
 
