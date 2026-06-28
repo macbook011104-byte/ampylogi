@@ -8,23 +8,40 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const QUERIES_FILE = path.join(__dirname, 'queries.json');
 
+// Auto-load .env file if present
+const envPath = path.join(__dirname, '.env');
+if (fs.existsSync(envPath)) {
+    const envConfig = fs.readFileSync(envPath, 'utf8');
+    envConfig.split('\n').forEach(line => {
+        const [key, ...valueParts] = line.split('=');
+        if (key && valueParts.length > 0) {
+            process.env[key.trim()] = valueParts.join('=').trim();
+        }
+    });
+}
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
-// Serve static frontend files directly from the current directory
 app.use(express.static(__dirname));
 
-// Email Transporter Config (Reads from environment variables)
-// Set these in production: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, RECEIVER_EMAIL
-const mailTransporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.ethereal.email', // Fallback to Ethereal Mail test service
-    port: process.env.SMTP_PORT || 587,
-    secure: false,
-    auth: {
-        user: process.env.SMTP_USER || null, // Fill in your SMTP email
-        pass: process.env.SMTP_PASS || null  // Fill in your SMTP password
+// Email Transporter Config
+const createTransporter = () => {
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+    const host = process.env.SMTP_HOST || 'smtp.gmail.com';
+    const port = parseInt(process.env.SMTP_PORT || '465');
+
+    if (user && pass) {
+        return nodemailer.createTransport({
+            host: host,
+            port: port,
+            secure: port === 465,
+            auth: { user, pass }
+        });
     }
-});
+    return null;
+};
 
 // Endpoint to handle Query Form Submissions
 app.post('/api/query', async (req, res) => {
@@ -87,14 +104,14 @@ app.post('/api/query', async (req, res) => {
 
     // Try to send email
     try {
-        if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-            console.log('⚠️ SMTP credentials not configured in environment variables.');
-            console.log('Sending mock email to console log:');
-            console.log(`To: ${receiverEmail}`);
+        const mailTransporter = createTransporter();
+        if (!mailTransporter) {
+            console.log('\n⚠️ SMTP credentials not configured in environment variables (.env).');
+            console.log(`Logistics Query Recorded Locally & Prepared for: ${receiverEmail}`);
             console.log(`Subject: ${emailSubject}`);
             
             return res.status(200).json({ 
-                message: 'Query received and logged to local queries.json! Setup SMTP environmental parameters to trigger actual email routing.' 
+                message: 'Query recorded successfully! (Add Gmail SMTP App Password to send live emails).' 
             });
         }
 
@@ -105,13 +122,12 @@ app.post('/api/query', async (req, res) => {
             html: emailHtml
         });
         
-        console.log(`📧 Notification email sent successfully to ${receiverEmail}`);
-        res.status(200).json({ message: 'Query received and email notification dispatched successfully!' });
+        console.log(`\n📧 LIVE EMAIL SENT SUCCESSFULLY TO: ${receiverEmail}`);
+        res.status(200).json({ message: 'Query received and email notification sent to ampy.logi21@gmail.com!' });
     } catch (mailError) {
         console.error('📧 Nodemailer Error:', mailError.message);
-        // We still return 200 because we successfully captured the query locally
         res.status(200).json({ 
-            message: 'Query recorded locally, but email dispatch failed. (Check server logs for SMTP errors).' 
+            message: 'Query recorded locally! (Check console for email credentials status).' 
         });
     }
 });
