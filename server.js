@@ -62,20 +62,26 @@ app.post('/api/query', async (req, res) => {
     }
 
     // 2. Email Sending Routing (SMTP logic)
-    const receiverEmail = process.env.RECEIVER_EMAIL || 'ampy.logi21@gmail.com'; // Business email from presentation deck
-    const emailSubject = `[AMPY LOGI Inquiry] - ${category} from ${name}`;
+    const receiverEmail = process.env.RECEIVER_EMAIL || 'ampy.logi21@gmail.com';
+    const emailSubject = `[AMPY LOGI ${queryData.inquiryType === 'vendor' ? 'Vendor Partner' : 'Client Inquiry'}] - ${category} from ${name}`;
     
+    const fieldsHtml = Object.entries(queryData)
+        .filter(([k]) => !['id', 'timestamp', 'message', 'inquiryType'].includes(k))
+        .map(([k, v]) => `<tr><td style="padding: 6px 12px; font-weight: bold; text-transform: capitalize; color: #555;">${k.replace(/([A-Z])/g, ' $1')}:</td><td style="padding: 6px 12px; color: #111;">${v}</td></tr>`)
+        .join('');
+
     const emailHtml = `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 10px;">
-            <h2 style="color: #ff9800; border-bottom: 2px solid #ff9800; padding-bottom: 10px;">New Inquiry Received</h2>
-            <p><strong>Customer Name:</strong> ${name}</p>
-            <p><strong>Email Address:</strong> <a href="mailto:${email}">${email}</a></p>
-            <p><strong>Query Category:</strong> ${category}</p>
-            <div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #3b82f6; border-radius: 4px; margin-top: 15px;">
-                <p style="margin: 0; font-style: italic;">"${message}"</p>
+        <div style="font-family: Arial, sans-serif; max-width: 650px; border: 1px solid #e2e8f0; padding: 25px; border-radius: 12px; background-color: #ffffff;">
+            <h2 style="color: #ff6b00; border-bottom: 2px solid #ff6b00; padding-bottom: 12px; margin-top: 0;">New Logistics Inquiry Received</h2>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; background-color: #f8fafc; border-radius: 8px;">
+                ${fieldsHtml}
+            </table>
+            <div style="background-color: #fff7ed; padding: 16px; border-left: 4px solid #ff6b00; border-radius: 6px;">
+                <h4 style="margin-top:0; color: #c2410c;">Details & Requirements:</h4>
+                <p style="margin: 0; white-space: pre-line; font-family: monospace; color: #334155;">${message}</p>
             </div>
-            <hr style="border: 0; border-top: 1px solid #eee; margin-top: 20px;"/>
-            <p style="font-size: 11px; color: #888; text-align: center;">This message was generated automatically by the Ampy Logi Backend System.</p>
+            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin-top: 25px;"/>
+            <p style="font-size: 12px; color: #64748b; text-align: center; margin-bottom: 0;">Automated notification from Ampy Logi Operating Layer</p>
         </div>
     `;
 
