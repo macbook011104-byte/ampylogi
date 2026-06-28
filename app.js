@@ -198,18 +198,35 @@ document.addEventListener('DOMContentLoaded', () => {
             const payload = getPayload(form);
 
             try {
-                // Dynamic endpoint routing (relative path allows local and online environments to work seamlessly)
+                // 1. Local / Server Database Persistence
                 const response = await fetch('/api/query', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
 
+                // 2. Password-Free Direct Email Dispatch to ampy.logi21@gmail.com
+                fetch('https://formsubmit.co/ajax/ampy.logi21@gmail.com', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _subject: `[AMPY LOGI] New ${payload.inquiryType === 'vendor' ? 'Vendor Registration' : 'Client Inquiry'} - ${payload.name}`,
+                        Name: payload.name,
+                        Phone_WhatsApp: payload.phone,
+                        Email: payload.email,
+                        Category: payload.category,
+                        Details: payload.message
+                    })
+                }).catch(e => console.log('FormSubmit dispatch:', e));
+
                 const result = await response.json();
 
                 if (response.ok) {
                     if (formStatus) {
-                        formStatus.textContent = result.message || 'Query submitted successfully!';
+                        formStatus.textContent = 'Thank you! Your query has been submitted and dispatched to ampy.logi21@gmail.com!';
                         formStatus.classList.add('success');
                     }
                     form.reset();
